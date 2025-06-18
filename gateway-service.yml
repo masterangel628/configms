@@ -1,0 +1,27 @@
+server:
+  port: 8081
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      default-zone: http://localhost:8761/eureka
+  instance:
+    hostname: localhost
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      mvc:
+        routes: # Aquise configura la apis de los microservicios
+          - id: ms-usuario
+            uri: lb://ms-usuario         #lb hace la referencia al balanceo de carga 
+            predicates:
+              - Path=/usuario/**
+          - id: ms-movimiento
+            uri: lb://ms-movimiento        #lb hace la referencia al balanceo de carga 
+            predicates:
+              - Path=/egreso/**
