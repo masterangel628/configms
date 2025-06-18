@@ -25,3 +25,7 @@ spring:
             uri: lb://ms-movimiento        #lb hace la referencia al balanceo de carga 
             predicates:
               - Path=/egreso/**
+          - id: ms-auth
+            uri: lb://ms-auth        #lb hace la referencia al balanceo de carga 
+            predicates:
+              - Path=/auth/**
