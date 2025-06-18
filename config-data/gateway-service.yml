@@ -21,12 +21,10 @@ spring:
             uri: lb://ms-usuario
             predicates:
               - Path=/usuario/**
-
           - id: ms-movimiento
             uri: lb://ms-movimiento
             predicates:
               - Path=/egreso/**
-              
           - id: ms-auth
             uri: lb://ms-auth
             predicates:
